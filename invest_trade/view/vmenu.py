@@ -6,4 +6,11 @@ class ViewMenu:
 
     def menustart(self):
         """display menu start"""
-        print("Début")
+
+        file_name = str(input("Donner nom du fichier a analyser (dataFinanceTest.csv) : "))
+        return file_name
+
+    def printlist(self, list_share):
+        """display menu start"""
+
+        print(list_share)
