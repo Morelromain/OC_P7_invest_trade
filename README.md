@@ -16,3 +16,5 @@ ex: `dataset_test`
 
 - choose a csv file
 ex: `dataset_test`
+
+- save  investment decisions in csv file
