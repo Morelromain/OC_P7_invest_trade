@@ -2,14 +2,14 @@
 
 import time
 
-import manage_share as manage
+import invest_trade.controller.manage_share as manage
 
 
 def total_benefit(selection):
     """Accumulation benefit"""
     benefit = sum(share[2]*share[1]/100 for share in selection)
     return round(benefit, 2)
- 
+
 
 def total_money(selection):
     """Accumulation money"""
@@ -19,7 +19,7 @@ def total_money(selection):
 def total_name(selection):
     """Accumulation name"""
     return "".join((share[0] + " | ") for share in selection)
- 
+
 
 def force_brute(shares, max_price):
     """bruteforce using binary knapsack 0/1 system"""
@@ -40,14 +40,16 @@ def force_brute(shares, max_price):
     return response
 
 
-file_name = input("Veuillez rentrer le nom du fichier csv à analyser (ex dataset1): ")
-shares = manage.import_share(file_name + ".csv")
-if shares != "error":
-    print("Application de l'algorithme de force brute :")
-    start = time.time()
-    response = force_brute(shares, 500)
-    stop = time.time()
-    print("Liste des actions choisies : {0}\n\
+def control_fb():
+    file_name = input("Nom du fichier csv à analyser (ex dataset1): ")
+    shares = manage.import_share(file_name + ".csv")
+    if shares != "error":
+        print("Application de l'algorithme de force brute :")
+        start = time.time()
+        response = force_brute(shares, 500)
+        stop = time.time()
+        print("Liste des actions choisies : {0}\n\
 Bénéfices : {1} euros \nSomme placée : {2} euros \n\
 Durée du calcul : {3} secondes \nComplexité algorithmique : O(n^2)"
-.format(total_name(response), total_benefit(response), total_money(response), stop-start))
+.format(total_name(response), total_benefit(response),
+        total_money(response), stop-start))

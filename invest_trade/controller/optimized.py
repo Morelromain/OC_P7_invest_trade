@@ -2,7 +2,7 @@
 
 import time
 
-import manage_share as manage
+import invest_trade.controller.manage_share as manage
 
 
 def ratio(share):
@@ -24,16 +24,17 @@ def glouton(shares, max_price, choice):
     return response, total_benefit, total_price
 
 
-file_name = input("Nom du fichier csv à analyser (ex dataset1): ")
-shares = manage.import_share(file_name + ".csv")
-if shares != "error":
-    start = time.time()
-    response, total_b, total_p = (glouton(shares, 500, ratio))
-    stop = time.time()
-    print("Liste des actions choisies : {0}\n\
+def control_op():
+    file_name = input("Nom du fichier csv à analyser (ex dataset1): ")
+    shares = manage.import_share(file_name + ".csv")
+    if shares != "error":
+        start = time.time()
+        response, total_b, total_p = (glouton(shares, 500, ratio))
+        stop = time.time()
+        print("Liste des actions choisies : {0}\n\
 Bénéfices : {1} euros \nSomme placée : {2} euros \n\
 Durée du calcul : {3} secondes \nComplexité algorithmique : O(log n)"
 .format(response, round(total_b, 2), round(total_p, 2), stop-start))
-    manage.save_choice(file_name, response,
-                       round(total_b, 2), round(total_p, 2))
-    print("Sauvegarde données : investment_decisions/{0}".format(file_name))
+        manage.save_choice(file_name, response,
+                           round(total_b, 2), round(total_p, 2))
+        print("Sauvegarde données : investment_decisions/{0}".format(file_name))
