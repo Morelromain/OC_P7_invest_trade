@@ -20,14 +20,14 @@ Python Version : 3.8.3
 
 ## Investment decisions using bruteforce
 
-- Select `1:Bruteforce` option :  
+- Select Bruteforce option : `1`
 
 - choose a csv file
 ex: `dataset_test`
 
 ## Investment decisions using greedy algorithm
 
-- Select `2:Optimisé` option : 
+- Select Optimised option : `2`
 
 - choose a csv file
 ex: `dataset_test`
@@ -36,4 +36,4 @@ ex: `dataset_test`
 
 ## Leave program
 
-- Select `3:Exit` option : 
+- Select Exit option : `3`
